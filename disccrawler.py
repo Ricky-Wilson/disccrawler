@@ -7,6 +7,9 @@ import time
 import fnmatch
 
 class FileInfo(object):
+    '''
+    Aggregates file information
+    '''
     
     def __init__(self, filepath):
         self.depth = filepath.strip('/').count('/')
@@ -20,6 +23,16 @@ class FileInfo(object):
         
         
     def match(self, exp):
+        """Test whether FILENAME matches PATTERN.
+
+        Patterns are Unix shell style:
+    
+        *       matches everything
+        ?       matches any single character
+        [seq]   matches any character in seq
+        [!seq]  matches any char not in seq
+    
+        """
         return fnmatch.fnmatch(self.filepath, exp)
     
     def readfile(self):
@@ -35,15 +48,11 @@ class FileInfo(object):
 def get_files(root):
     
     for root, dirs, files in os.walk(root):
-    
-        for directory in dirs:
-            for filename in directory:
-                filename = os.path.join(root, filename)
-                if os.path.isfile(filename) or os.path.isdir(filename):
-                    yield FileInfo(filename)
-    
+        
         for filename in files:
             filename = os.path.join(root, filename)
             if os.path.isfile(filename) or os.path.isdir(filename):            
                 yield FileInfo(filename)
                     
+for f in get_files('/'):
+    print f
