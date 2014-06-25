@@ -12,7 +12,7 @@ import json
 class File(object):
 
     '''
-    Aggregates file information
+    Aggregates file information.
     '''
 
     def __init__(self, filepath):
@@ -41,7 +41,7 @@ class File(object):
 
 
     def mime_match(self, mime):
-        ''' Match a file based on mime type '''
+        ''' Match a file based on mime type. '''
         return self.mime == mime
 
 
@@ -56,7 +56,7 @@ class File(object):
         return json.dumps(self.__dict__, indent=4, sort_keys=2)
 
 def crawl(root):
-    ''' Crawl the file system '''
+    ''' Crawl the file system. '''
 
     for root, dirs, files in os.walk(root):
 
