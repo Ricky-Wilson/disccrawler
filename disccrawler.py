@@ -65,6 +65,3 @@ def crawl(root):
             if os.path.isfile(filename) or os.path.isdir(filename):
                 yield File(filename)
 
-for f in crawl('/home/'):
-    print f
-
