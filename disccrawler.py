@@ -47,7 +47,3 @@ def get_files(root):
             if os.path.isfile(filename) or os.path.isdir(filename):            
                 yield FileInfo(filename)
                     
-
-for this in get_files('/home/ricky/Code/Python'):
-    if this.match('*.py'):
-        print this.filepath
